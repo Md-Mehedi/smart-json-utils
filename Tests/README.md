@@ -1,8 +1,8 @@
-# JSON Checker - Test Suite Documentation
+# Smart JSON Utils - Test Suite Documentation
 
 ## Overview
 
-This directory contains comprehensive tests for the JSON Checker application, specifically focusing on **5-level deep nested array sorting** functionality.
+This directory contains comprehensive tests for the Smart JSON Utils application, specifically focusing on **5-level deep nested array sorting** functionality.
 
 ## Directory Structure
 
@@ -168,7 +168,7 @@ The mock files contain the expected results for various sorting scenarios:
 
 ## Success Criteria
 
-**All tests must pass** for the JSON Checker to be considered fully functional:
+**All tests must pass** for the Smart JSON Utils to be considered fully functional:
 
 - ✅ 10/10 individual sorting tests
 - ✅ Multi-level simultaneous sorting

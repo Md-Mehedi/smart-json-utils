@@ -1,5 +1,5 @@
 export const APP_CONSTANTS = {
-  APP_NAME: 'JSON Checker',
+  APP_NAME: 'Smart JSON Utils',
   VERSION: '1.0.0',
   AUTHOR: 'Developer',
   

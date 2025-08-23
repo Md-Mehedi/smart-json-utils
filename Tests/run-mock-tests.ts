@@ -9,7 +9,7 @@
 
 import { runTests } from './mock-integration-test';
 
-console.log('🚀 JSON Checker - 5-Level Deep Nested Array Verification');
+console.log('🚀 Smart JSON Utils - 5-Level Deep Nested Array Verification');
 console.log('=' .repeat(60));
 
 const success = runTests();

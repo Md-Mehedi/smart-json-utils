@@ -1,181 +1,216 @@
-# JSON Checker - Advanced JSON Object Sorter
+# 🚀 Smart JSON Utils
 
-A modern Angular 18 application for sorting and analyzing JSON objects with advanced array sorting capabilities and an intuitive UI.
+[![Angular](https://img.shields.io/badge/Angular-18.0-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![RxJS](https://img.shields.io/badge/RxJS-7.8-B7178C?style=flat&logo=reactivex&logoColor=white)](https://rxjs.dev/)
+[![SCSS](https://img.shields.io/badge/SCSS-3-CF649A?style=flat&logo=sass&logoColor=white)](https://sass-lang.com/)
+[![Jasmine](https://img.shields.io/badge/Jasmine-5.1-8A4182?style=flat&logo=jasmine&logoColor=white)](https://jasmine.github.io/)
+[![Karma](https://img.shields.io/badge/Karma-6.4-56C5A8?style=flat&logo=karma&logoColor=white)](https://karma-runner.github.io/)
 
-## Features
+> Smart JSON Utils was born from the need to handle complex nested JSON structures in enterprise applications. Traditional JSON tools often fall short when dealing with deep nesting and advanced sorting requirements. This tool fills that gap by providing intelligent processing capabilities that understand the relationships between data structures.
 
-- 🚀 **Angular 18** with standalone components
-- 💅 **Modern SCSS** styling with CSS variables
-- 📱 **Responsive design** for all devices
-- 🎯 **Real-time JSON validation** with debounced input
-- 🔄 **Advanced array sorting** with nested field support
-- 🌳 **Interactive JSON tree view** with expand/collapse
-- 🎛️ **Sliding options panel** for array configuration
-- 💾 **LocalStorage persistence** for user preferences
-- 🎨 **Glass morphism UI** with blur effects
-- ⚡ **Reactive programming** with RxJS
+## 📋 Quick Summary
 
-## Project Structure
+Smart JSON Utils is a powerful web application that intelligently processes, sorts, and visualizes JSON data structures. It features **5-level deep nested array sorting**, real-time validation, interactive tree visualization, and persistent user preferences. Perfect for developers, data analysts, and anyone working with complex JSON structures.
 
-```
-src/
-├── app/
-│   ├── components/
-│   │   ├── header/
-│   │   ├── json-input/
-│   │   ├── array-options/
-│   │   ├── json-tree/
-│   │   ├── loader/
-│   │   ├── back-to-top/
-│   │   └── floating-sorting-btn/
-│   ├── services/
-│   │   ├── json-processor.service.ts
-│   │   ├── json-tree.service.ts
-│   │   └── ui-state.service.ts
-│   ├── shared/
-│   │   ├── interfaces/
-│   │   ├── constants/
-│   │   └── utils/
-│   ├── app.component.ts
-│   └── app.component.scss
-├── assets/
-├── styles.scss
-├── main.ts
-└── index.html
-```
+## ✨ Key Features
 
-## Components Overview
+### 🎯 **Smart JSON Processing**
+- **Real-time JSON validation** with descriptive error messages
+- **Intelligent array detection** with automatic field discovery
+- **5-level deep nesting support** for complex data structures
+- **Path normalization** handling (e.g., `users[0].addresses` → `users.addresses`)
+- **Cascading sort logic** with tiebreaker support for multiple fields
 
-### Core Components
+### 🌳 **Interactive Visualization**
+- **Expandable JSON tree view** with syntax highlighting
+- **Schema panel** showing minified JSON structure
+- **Type indicators** for different value types (string, number, boolean, etc.)
+- **Copy to clipboard** functionality for processed results
+- **Smooth animations** and modern glass morphism UI design
 
-- **HeaderComponent**: Navigation bar with branding
-- **JsonInputComponent**: Main input area with validation and controls
-- **ArrayOptionsComponent**: Sliding panel for configuring array sorting
-- **JsonTreeComponent**: Expandable tree view for JSON output
-- **LoaderComponent**: Animated loading indicator
+### ⚙️ **Advanced Configuration**
+- **Sliding options panel** for array sorting configuration
+- **Individual array preferences** with field-specific sorting
+- **Master controls** for bulk operations across all arrays
+- **ASC/DESC ordering** for each array independently
+- **LocalStorage persistence** for user preferences and settings
 
-### UI Components
+### 📱 **Modern User Experience**
+- **Responsive design** optimized for desktop, tablet, and mobile
+- **Floating controls** for easy access to key functions
+- **Back-to-top button** for long JSON structures
+- **Debounced input** to prevent excessive processing
+- **Loading indicators** and smooth transitions
 
-- **BackToTopComponent**: Floating button to scroll to top
-- **FloatingSortingBtnComponent**: Fixed button to open sorting options
+### 🧪 **Comprehensive Testing**
+- **44+ unit tests** covering all core functionality
+- **Mock integration tests** with 5-level deep nesting verification
+- **Edge case handling** for null values, mixed types, and malformed JSON
+- **Preference persistence testing** with LocalStorage validation
 
-### Services
+## 🚀 Quick Start
 
-- **JsonProcessorService**: Handles JSON validation, parsing, and sorting
-- **JsonTreeService**: Manages JSON tree rendering and interactions
-- **UiStateService**: Manages application UI state and interactions
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+- Modern web browser with ES6+ support
 
-## Key Features
+### Installation & Setup
 
-### Advanced Array Sorting
-
-- Automatic detection of nested arrays
-- Configurable sorting by any primitive field
-- Support for dot-notation field paths (e.g., `user.profile.name`)
-- Individual nesting preferences per array
-- Master toggle for all array nesting options
-
-### JSON Tree Visualization
-
-- Syntax-highlighted JSON display
-- Expandable/collapsible nodes
-- Type indicators for different value types
-- Compact comma formatting
-- Full expand/collapse controls
-
-### User Experience
-
-- Real-time validation with visual feedback
-- Smooth animations and transitions
-- Auto-scroll to results
-- Copy to clipboard functionality
-- Responsive design for mobile/tablet
-
-## Installation & Setup
-
-1. **Clone the repository**:
+1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
-   cd json-checker
+   git clone https://github.com/your-username/smart-json-utils.git
+   cd smart-json-utils
    ```
 
-2. **Install dependencies**:
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-3. **Start development server**:
+3. **Start development server:**
    ```bash
    npm start
    # or
    ng serve
    ```
+   Navigate to `http://localhost:4200` - the app will automatically reload when you change source files.
 
-4. **Build for production**:
+4. **Run tests:**
    ```bash
-   npm run build
-   # or
-   ng build
+   npm test
    ```
 
-## Usage
+5. **Build for production:**
+   ```bash
+   npm run build
+   ```
+   The build artifacts will be stored in the `dist/` directory.
 
-1. **Input JSON**: Paste or type JSON in the input area
-2. **Validation**: Real-time validation with error messages
-3. **Array Options**: Configure sorting for detected arrays
-4. **Sort**: Click "Sort JSON" to process and display results
-5. **Explore**: Use the tree view to explore sorted JSON
-6. **Copy**: Copy the sorted JSON to clipboard
+## 📖 How to Use
 
-## Development
+### Basic Usage
+1. **Input JSON**: Paste or type your JSON data in the input area
+2. **Real-time Validation**: See instant validation feedback with error highlighting
+3. **Configure Arrays**: Click the floating sort button to open the options panel
+4. **Set Preferences**: Choose sorting fields and order (ASC/DESC) for each detected array
+5. **Process**: Click "Sort JSON" to apply your configurations
+6. **Explore Results**: Use the interactive tree view to browse the sorted structure
+7. **Export**: Copy the sorted JSON to clipboard for use elsewhere
 
-### Adding New Components
+### Advanced Features
+- **Nested Field Sorting**: Use dot-notation paths like `user.profile.name` for deep field access
+- **Master Controls**: Toggle all array preferences at once using master switches
+- **Schema View**: Access the schema panel to see a minified structure overview
+- **Preference Persistence**: Your settings are automatically saved and restored
 
-```bash
-ng generate component components/my-component --standalone
+## 🏗️ Project Architecture
+
+### Component Structure
+```
+src/app/
+├── components/
+│   ├── header/                # Navigation and branding
+│   ├── json-input/            # Main input area with validation
+│   ├── array-options/         # Sliding configuration panel  
+│   ├── schema-panel/          # JSON structure visualization
+│   ├── json-tree/             # Interactive tree view
+│   ├── floating-controls/     # Fixed action buttons
+│   ├── loader/                # Loading animations
+│   └── back-to-top/           # Scroll-to-top functionality
+├── services/
+│   ├── json-processor.service.ts    # Core JSON processing logic
+│   ├── json-tree.service.ts         # Tree rendering management
+│   ├── schema-generator.service.ts  # Schema analysis
+│   └── ui-state.service.ts          # Application state management
+├── shared/
+│   ├── interfaces/            # TypeScript interfaces
+│   ├── constants/             # Application constants
+│   └── utils/                 # Utility functions
+└── assets/
+    ├── styles/                # Global stylesheets
+    └── images/                # Static assets
 ```
 
-### Adding New Services
+### Key Services
 
-```bash
-ng generate service services/my-service
-```
+- **JsonProcessorService**: Handles JSON validation, parsing, array detection, and intelligent sorting with cascading logic
+- **JsonTreeService**: Manages the interactive tree view rendering and user interactions
+- **SchemaGeneratorService**: Analyzes JSON structure and generates minified schema representations
+- **UiStateService**: Centralized state management for UI components and user interactions
 
-### Code Style
+## 🤝 How to Contribute
 
-- Use TypeScript strict mode
-- Follow Angular style guide
-- Use SCSS with BEM methodology
-- Implement reactive patterns with RxJS
+We welcome contributions! Here's how you can help make Smart JSON Utils even better:
 
-## Technologies Used
+### Getting Started
+1. **Fork the repository** on GitHub
+2. **Clone your fork** locally: `git clone https://github.com/your-username/smart-json-utils.git`
+3. **Create a feature branch**: `git checkout -b feature/amazing-new-feature`
+4. **Install dependencies**: `npm install`
+5. **Start development**: `npm start`
 
-- **Angular 18** - Framework
-- **TypeScript** - Language
-- **SCSS** - Styling
-- **RxJS** - Reactive programming
-- **Font Awesome** - Icons
-- **Inter Font** - Typography
+### Development Guidelines
+- **Code Style**: Follow Angular style guide and use TypeScript strict mode
+- **Testing**: Write unit tests for new features (aim for >80% coverage)
+- **SCSS**: Use BEM methodology and CSS custom properties
+- **Components**: Create standalone components with reactive patterns
+- **Commit Messages**: Use conventional commit format (`feat:`, `fix:`, `docs:`, etc.)
 
-## Browser Support
+### Types of Contributions
+- 🐛 **Bug fixes**: Fix issues and improve stability
+- ✨ **New features**: Add sorting algorithms, UI improvements, export formats
+- 📚 **Documentation**: Improve README, add code comments, create tutorials
+- 🎨 **UI/UX**: Enhance design, accessibility, and user experience
+- 🧪 **Testing**: Add test cases, improve coverage, performance tests
+- 🔧 **Infrastructure**: Build scripts, CI/CD, deployment improvements
 
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
+### Submitting Changes
+1. **Run tests**: `npm test` - ensure all tests pass
+2. **Build project**: `npm run build` - verify production build works
+3. **Commit changes**: Follow conventional commit format
+4. **Push to fork**: `git push origin feature/your-feature-name`
+5. **Create Pull Request**: Provide clear description of changes
 
-## Contributing
+### Code Review Process
+- All submissions require review before merging
+- Automated tests must pass (GitHub Actions CI/CD)
+- Maintain backward compatibility when possible
+- Update documentation for user-facing changes
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+## 🛠️ Technology Stack
 
-## License
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Angular** | 18.0 | Modern web framework with standalone components |
+| **TypeScript** | 5.4 | Type-safe JavaScript with advanced tooling |
+| **RxJS** | 7.8 | Reactive programming for async operations |
+| **SCSS** | 3.0 | Advanced CSS with variables and mixins |
+| **ngx-json-viewer** | 3.2 | Interactive JSON tree visualization |
+| **Jasmine** | 5.1 | Behavior-driven testing framework |
+| **Karma** | 6.4 | Test runner for unit tests |
 
-MIT License - see LICENSE file for details
+### Development Tools
+- **Angular CLI**: Project scaffolding and build tools
+- **ESLint**: Code linting and style enforcement  
+- **Prettier**: Code formatting
+- **Chrome DevTools**: Debugging and performance analysis
 
-## Author
 
-Created with ❤️ for advanced JSON processing needs. 
+<!-- ## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. -->
+
+## 🙏 Acknowledgments
+
+- **Angular Team**: For the amazing framework and tools
+- **RxJS Contributors**: For powerful reactive programming capabilities
+- **Community Contributors**: Thank you to everyone who contributes to this project
+- **ngx-json-viewer**: For the excellent JSON visualization component
+
+---
+
+**Made with ❤️ by [MD Mehedi Hasan](https://github.com/your-username)**
+
+*Star ⭐ this repository if you find it helpful!* 

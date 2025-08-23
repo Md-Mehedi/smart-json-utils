@@ -1,4 +1,4 @@
-# JSON Checker - Test Suite Documentation
+# Smart JSON Utils - Test Suite Documentation
 
 ## Overview
 This project includes comprehensive unit tests using **Jasmine** and **Karma** for all core functionality, particularly focusing on the array sorting and nested JSON processing capabilities.
@@ -61,7 +61,7 @@ npx ng test --include="**/json-processor.service.spec.ts"
 ### Test Configuration:
 - **Framework**: Jasmine + Karma
 - **Browser**: ChromeHeadless (CI) / Chrome (development)
-- **Coverage**: HTML reports generated in `./coverage/json-checker/`
+- **Coverage**: HTML reports generated in `./coverage/smart-json-utils/`
 
 ## Test Results Summary
 
@@ -130,4 +130,4 @@ it('should toggle master sort order when button is clicked', () => {
 - **Deterministic tests** with no random behavior
 - **Comprehensive assertions** for expected outcomes
 
-This test suite ensures the JSON Checker application works reliably across all scenarios, from simple JSON sorting to complex nested array manipulations with instant UI updates. 
+This test suite ensures the Smart JSON Utils application works reliably across all scenarios, from simple JSON sorting to complex nested array manipulations with instant UI updates. 

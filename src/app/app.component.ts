@@ -27,5 +27,5 @@ import { FloatingControlsComponent } from './components/floating-controls/floati
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'JSON Checker - Advanced JSON Object Sorter';
+  title = 'Smart JSON Utils - Advanced JSON Object Sorter';
 } 
