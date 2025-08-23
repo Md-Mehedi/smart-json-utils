@@ -1,0 +1,50 @@
+<div class="results-section" *ngIf="uiState.resultsVisible$ | async">
+  <div class="results-header">
+    <h2 class="results-title">
+      <i class="fas fa-code-branch"></i>
+      Sorted JSON Result
+    </h2>
+    
+    <div class="results-actions">
+      <button 
+        class="btn btn-secondary" 
+        (click)="expandAll()"
+        title="Expand all nodes">
+        <i class="fas fa-expand-arrows-alt"></i>
+        Expand All
+      </button>
+      
+      <button 
+        class="btn btn-secondary" 
+        (click)="collapseAll()"
+        title="Collapse all nodes">
+        <i class="fas fa-compress-arrows-alt"></i>
+        Collapse All
+      </button>
+      
+      <button 
+        class="btn btn-primary" 
+        (click)="copyResult()"
+        title="Copy JSON to clipboard">
+        <i class="fas fa-copy"></i>
+        Copy JSON
+      </button>
+      
+      <button 
+        class="btn btn-secondary" 
+        (click)="resetToTop()"
+        title="Clear and go to top">
+        <i class="fas fa-arrow-up"></i>
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <div class="json-tree-container">
+    <ngx-json-viewer 
+      #jsonViewer
+      [json]="processedJson" 
+      [expanded]="expanded">
+    </ngx-json-viewer>
+  </div>
+</div> 

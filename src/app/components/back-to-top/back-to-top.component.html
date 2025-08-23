@@ -1,0 +1,7 @@
+<button 
+  class="back-to-top" 
+  [class.visible]="uiState.backToTopVisible$ | async"
+  (click)="scrollToTop()"
+  title="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button> 

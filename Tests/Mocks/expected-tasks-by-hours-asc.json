@@ -1,0 +1,179 @@
+{
+  "companies": [
+    {
+      "id": 1,
+      "name": "TechCorp",
+      "foundedYear": 2010,
+      "departments": [
+        {
+          "id": 101,
+          "name": "Engineering",
+          "budget": 500000,
+          "teams": [
+            {
+              "id": 1001,
+              "name": "Frontend",
+              "teamLead": "Alice Johnson",
+              "projects": [
+                {
+                  "id": 10001,
+                  "name": "Web Portal",
+                  "priority": "High",
+                  "tasks": [
+                    {
+                      "id": 100003,
+                      "title": "Implement Authentication",
+                      "status": "Pending",
+                      "assignee": "Bob Wilson",
+                      "estimatedHours": 24
+                    },
+                    {
+                      "id": 100002,
+                      "title": "Design User Interface",
+                      "status": "Completed",
+                      "assignee": "Jane Smith",
+                      "estimatedHours": 32
+                    },
+                    {
+                      "id": 100001,
+                      "title": "Setup React Components",
+                      "status": "In Progress",
+                      "assignee": "John Doe",
+                      "estimatedHours": 40
+                    }
+                  ]
+                },
+                {
+                  "id": 10002,
+                  "name": "Mobile App",
+                  "priority": "Medium",
+                  "tasks": [
+                    {
+                      "id": 100004,
+                      "title": "Setup Flutter Framework",
+                      "status": "Completed",
+                      "assignee": "Sarah Connor",
+                      "estimatedHours": 16
+                    },
+                    {
+                      "id": 100005,
+                      "title": "Create App Navigation",
+                      "status": "In Progress",
+                      "assignee": "Mike Ross",
+                      "estimatedHours": 28
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 1002,
+              "name": "Backend",
+              "teamLead": "Charlie Brown",
+              "projects": [
+                {
+                  "id": 10003,
+                  "name": "API Gateway",
+                  "priority": "Critical",
+                  "tasks": [
+                    {
+                      "id": 100006,
+                      "title": "Design Database Schema",
+                      "status": "Completed",
+                      "assignee": "David Lee",
+                      "estimatedHours": 20
+                    },
+                    {
+                      "id": 100007,
+                      "title": "Implement REST APIs",
+                      "status": "In Progress",
+                      "assignee": "Emma Davis",
+                      "estimatedHours": 60
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 102,
+          "name": "Marketing",
+          "budget": 200000,
+          "teams": [
+            {
+              "id": 1003,
+              "name": "Digital Marketing",
+              "teamLead": "Grace Miller",
+              "projects": [
+                {
+                  "id": 10004,
+                  "name": "Social Media Campaign",
+                  "priority": "High",
+                  "tasks": [
+                    {
+                      "id": 100008,
+                      "title": "Create Content Calendar",
+                      "status": "Pending",
+                      "assignee": "Tom Wilson",
+                      "estimatedHours": 12
+                    },
+                    {
+                      "id": 100009,
+                      "title": "Design Graphics",
+                      "status": "In Progress",
+                      "assignee": "Lisa Anderson",
+                      "estimatedHours": 25
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "DataSystems",
+      "foundedYear": 2015,
+      "departments": [
+        {
+          "id": 201,
+          "name": "Research",
+          "budget": 300000,
+          "teams": [
+            {
+              "id": 2001,
+              "name": "AI Research",
+              "teamLead": "Dr. Alan Turing",
+              "projects": [
+                {
+                  "id": 20001,
+                  "name": "Machine Learning Platform",
+                  "priority": "Critical",
+                  "tasks": [
+                    {
+                      "id": 200001,
+                      "title": "Data Collection",
+                      "status": "Completed",
+                      "assignee": "Neural Network",
+                      "estimatedHours": 80
+                    },
+                    {
+                      "id": 200002,
+                      "title": "Model Training",
+                      "status": "In Progress",
+                      "assignee": "Deep Learning",
+                      "estimatedHours": 120
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 

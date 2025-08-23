@@ -1,0 +1,226 @@
+.results-section {
+  border-top: 1px solid var(--border-color);
+  animation: fadeIn 0.5s ease;
+  margin-bottom: 40px; /* Add space at bottom for better layout */
+}
+
+.results-header {
+  padding: 25px 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(99, 102, 241, 0.02);
+}
+
+.results-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  i {
+    color: var(--primary-color);
+  }
+}
+
+.results-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.json-tree-container {
+  padding: 30px;
+  background: rgba(248, 250, 252, 0.5);
+  border-radius: 0 0 var(--border-radius-xl) var(--border-radius-xl);
+  min-height: 200px; /* Ensure minimum height for small JSON */
+}
+
+.json-tree {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 20px;
+  white-space: pre;
+}
+
+// JSON Tree Styling
+:deep(.json-node) {
+  display: block;
+  margin: 0;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+}
+
+:deep(.json-key) {
+  color: #0066cc;
+  font-weight: 600;
+}
+
+:deep(.json-string) {
+  color: #008800;
+}
+
+:deep(.json-number) {
+  color: #0066ff;
+  font-weight: 500;
+}
+
+:deep(.json-boolean) {
+  color: #cc6600;
+  font-weight: 600;
+}
+
+:deep(.json-null) {
+  color: #666666;
+  font-style: italic;
+}
+
+:deep(.json-colon) {
+  color: #333333;
+  margin: 0 4px;
+}
+
+:deep(.json-comma) {
+  color: #333333;
+}
+
+:deep(.json-bracket) {
+  color: #333333;
+  font-weight: bold;
+}
+
+:deep(.json-toggle) {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+  -webkit-user-select: none;
+  
+  &:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: -2px -4px;
+  }
+}
+
+:deep(.json-toggle-icon) {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+  
+  i {
+    font-size: 10px;
+  }
+}
+
+:deep(.json-toggle.collapsed) {
+  .json-toggle-icon {
+    transform: rotate(-90deg);
+  }
+}
+
+:deep(.json-children) {
+  margin-left: 20px;
+  border-left: 1px solid rgba(99, 102, 241, 0.2);
+  padding-left: 15px;
+  transition: all 0.2s ease;
+  
+  &.collapsed {
+    display: none;
+  }
+}
+
+:deep(.json-value) {
+  color: var(--text-primary);
+}
+
+// Error state
+:deep(.error) {
+  color: var(--error-color);
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .results-header {
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .results-actions {
+    flex-direction: column;
+    width: 100%;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+  
+  .json-tree-container {
+    padding: 20px;
+  }
+  
+  .json-tree {
+    padding: 15px;
+    font-size: 0.8rem;
+  }
+  
+  :deep(.json-children) {
+    margin-left: 15px;
+    padding-left: 10px;
+  }
+}
+
+// Ensure ngx-json-viewer displays all content without scrolling
+:deep(ngx-json-viewer) {
+  display: block;
+  width: 100%;
+  
+  .json-viewer {
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  .json-viewer-container {
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+  }
+  
+  // Style the JSON content
+  .json-object, .json-array {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  
+  // Remove any height constraints
+  * {
+    max-height: none !important;
+  }
+} 

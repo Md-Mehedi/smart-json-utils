@@ -1,0 +1,9 @@
+<div 
+  class="floating-sorting-btn" 
+  [class.hidden]="!(uiState.floatingButtonVisible$ | async)"
+  (click)="toggleSidebar()">
+  <span class="floating-btn-text">Sorting Options</span>
+  <span class="floating-btn-icon">
+    <i class="fas fa-cogs"></i>
+  </span>
+</div> 

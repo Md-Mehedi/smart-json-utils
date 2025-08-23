@@ -1,0 +1,200 @@
+<app-base-panel
+  [isVisible]="(uiState.sidebarVisible$ | async) || false"
+  title="Sorting Options"
+  icon="fa-cogs"
+  (close)="closeSidebar()">
+
+  <div class="panel-controls" *ngIf="arrayFields.length > 0">
+    <!-- Key Sort Order Section -->
+    <div class="control-section">
+      <div class="section-label">
+        <div class="section-label-inner">
+          <i class="fas fa-key"></i>
+          <span>Key Sort Order</span>
+        </div>
+        <app-sort-toggle
+          [sortOrder]="fieldSortOrder"
+          colorScheme="emerald"
+          title="Toggle key sort order for object keys"
+          (sortOrderChange)="onFieldSortOrderChange($event)">
+        </app-sort-toggle>
+      </div>
+    </div>
+        
+    <!-- Array Sort Order Section -->
+    <div class="control-section">
+      <div class="array-sort-area">
+        <div class="array-sort-row">
+          <div class="array-sort-left">
+            <div class="section-label-inner">
+              <i class="fas fa-list"></i>
+              <span>Array Sort Order</span>
+            </div>
+            <div class="expansion-controls">
+              <button 
+                type="button" 
+                class="btn btn-secondary btn-sm" 
+                (click)="expandAllArrays()"
+                title="Expand all array sections">
+                <i class="fas fa-expand-arrows-alt"></i>
+                Expand All
+              </button>
+              <button 
+                type="button" 
+                class="btn btn-secondary btn-sm" 
+                (click)="collapseAllArrays()"
+                title="Collapse all array sections">
+                <i class="fas fa-compress-arrows-alt"></i>
+                Collapse All
+              </button>
+            </div>
+          </div>
+          <div class="array-sort-right-controls">
+            <div class="nested-control">
+              <input 
+                type="checkbox" 
+                id="showNestedFields" 
+                class="nested-checkbox"
+                [checked]="masterNestedChecked"
+                [indeterminate]="masterNestedIndeterminate"
+                (change)="onMasterNestedChange($event)">
+              <label for="showNestedFields" class="nested-label">Sub-keys</label>
+            </div>
+            <div class="sort-control">
+              <app-sort-toggle
+                [sortOrder]="masterSortOrder"
+                size="sm"
+                title="Toggle master sort order for arrays"
+                (sortOrderChange)="onMasterSortOrderChange($event)">
+              </app-sort-toggle>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <hr class="subsection-divider">
+      
+      <!-- Auto Key Select By Subsection -->
+      <div class="subsection">
+        <div class="section-label">
+          <div class="section-label-inner">
+            <i class="fas fa-brain"></i>
+            <span>Auto Key Select By</span>
+          </div>
+          <button 
+            type="button" 
+            class="smart-selection-btn"
+            [class.id]="smartSelectionMode === 'ID'"
+            [class.name]="smartSelectionMode === 'Name'"
+            (click)="toggleSmartSelectionMode()"
+            title="Toggle smart key selection between ID and Name priority">
+            <i class="fas fa-brain"></i>
+            {{ smartSelectionMode }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="array-list" *ngIf="arrayFields.length > 0">
+    <div 
+      class="array-item" 
+      [class]="'depth-' + arrayField.depth"
+      *ngFor="let arrayField of arrayFields">
+      
+      <div class="array-header" (click)="toggleArrayExpansion(arrayField.fullPath)">
+        <div class="array-left-section">
+          <div class="depth-controls">
+            <div class="depth-badge">D{{ arrayField.depth }}</div>
+            <div class="array-toggle">
+              <i class="fas" [class]="expandedArrays.has(arrayField.fullPath) ? 'fa-chevron-down' : 'fa-chevron-right'"></i>
+            </div>
+          </div>
+          
+          <div class="array-title">
+            <div class="array-name" [title]="arrayField.fullPath">{{ arrayField.name }}</div>
+            <div class="array-path" [title]="'Full path: ' + arrayField.fullPath">{{ arrayField.fullPath }}</div>
+            <div class="array-subtitle" 
+                 [class.no-selection]="!getArraySortPreference(arrayField.fullPath)"
+                 [class.has-selection]="getArraySortPreference(arrayField.fullPath)"
+                 [title]="getArraySortPreference(arrayField.fullPath) ? 'Currently sorting by: ' + getArraySortPreference(arrayField.fullPath) : 'No sorting field selected for this array'">
+              <span *ngIf="getArraySortPreference(arrayField.fullPath); else noSelection">
+                <i class="fas fa-sort-amount-down-alt"></i>
+                Sorting by: {{ getArraySortPreference(arrayField.fullPath) }}
+              </span>
+              <ng-template #noSelection>
+                <i class="fas fa-question-circle"></i>
+                No sorting field selected
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        
+        <div class="array-controls">
+          <div class="array-info">{{ arrayField.items }} items</div>
+          <div class="individual-controls">
+            <div class="individual-nested-toggle">
+              <input 
+                type="checkbox" 
+                [id]="'nested-' + arrayField.fullPath" 
+                class="individual-nested-checkbox"
+                [checked]="getArrayNestingPreference(arrayField.fullPath)"
+                [title]="'Toggle nested fields for ' + arrayField.name"
+                (click)="$event.stopPropagation()"
+                (change)="onIndividualNestedChange(arrayField.fullPath, $event)">
+              <label [for]="'nested-' + arrayField.fullPath" class="individual-nested-label">
+                Sub-keys
+              </label>
+            </div>
+            
+            <div class="individual-sort-toggle">
+              <app-sort-toggle
+                [sortOrder]="getArraySortOrder(arrayField.fullPath)"
+                size="sm"
+                title="Toggle sort order for this array"
+                (click)="$event.stopPropagation()"
+                (sortOrderChange)="onIndividualSortOrderChange(arrayField.fullPath, $event)">
+              </app-sort-toggle>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div 
+        class="array-fields" 
+        *ngIf="expandedArrays.has(arrayField.fullPath) && getFieldEntries(arrayField.fields).length > 0">
+        
+        <div 
+          class="field-option" 
+          *ngFor="let field of getFieldEntries(arrayField.fields)">
+          <input 
+            type="radio" 
+            [id]="arrayField.fullPath + '-' + field.key"
+            [name]="arrayField.fullPath"
+            class="field-radio"
+            [value]="field.key"
+            [checked]="getArraySortPreference(arrayField.fullPath) === field.key"
+            [title]="'Sort by ' + field.key + ' field'"
+            (change)="onSortPreferenceChange(arrayField.fullPath, field.key)">
+          
+          <label 
+            [for]="arrayField.fullPath + '-' + field.key" 
+            class="field-label"
+            [title]="field.key">
+            {{ field.key }}
+            <span class="field-type">
+              <i class="fas" [class]="getTypeIcon(field.value.primaryType)"></i>
+              {{ field.value.primaryType }}
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-arrays-message" *ngIf="arrayFields.length === 0">
+    <i class="fas fa-info-circle"></i>
+    <p>No arrays detected in your JSON.</p>
+    <p>Arrays will appear here once you input JSON with array fields.</p>
+  </div>
+</app-base-panel> 

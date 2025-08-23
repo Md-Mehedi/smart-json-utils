@@ -1,0 +1,81 @@
+<div class="input-container">
+  <div class="input-header">
+    <h2 class="input-title">
+      <i class="fas fa-edit"></i>
+      JSON Input
+    </h2>
+    <div class="input-status" [ngClass]="validation.type">
+      <i class="fas" [ngClass]="{
+        'fa-check-circle': validation.type === 'success',
+        'fa-exclamation-circle': validation.type === 'error',
+        'fa-info-circle': validation.type === 'info',
+        'fa-exclamation-triangle': validation.type === 'warning'
+      }"></i>
+      <span class="status-text">{{ validation.message }}</span>
+    </div>
+  </div>
+
+  <div class="input-actions">
+    <button 
+      class="btn btn-primary" 
+      (click)="handleSort()"
+      [disabled]="!validation.isValid || !jsonInput.trim() || (uiState.isLoading)"
+      [class.loading]="uiState.isLoading">
+      <i class="fas fa-sort-amount-down" *ngIf="!uiState.isLoading"></i>
+      <i class="fas fa-spinner fa-spin" *ngIf="uiState.isLoading"></i>
+      {{ uiState.isLoading ? 'Processing...' : 'Sort JSON' }}
+    </button>
+    
+    <button 
+      class="btn btn-secondary" 
+      (click)="loadExample()"
+      [disabled]="uiState.isLoading">
+      <i class="fas fa-file-code"></i>
+      Load Example
+    </button>
+    
+    <button 
+      class="btn btn-secondary" 
+      (click)="clearInput()"
+      [disabled]="!jsonInput.trim() || uiState.isLoading">
+      <i class="fas fa-trash-alt"></i>
+      Clear
+    </button>
+  </div>
+
+  <div class="textarea-container">
+    <textarea
+      #textareaRef
+      class="json-textarea"
+      [(ngModel)]="jsonInput"
+      (input)="onInputChange()"
+      placeholder="Paste your JSON here or click 'Load Example' to get started...
+
+Example with nested arrays:
+{
+  &quot;systemName&quot;: &quot;MyApp&quot;,
+  &quot;names&quot;: [
+    {
+      &quot;name&quot;: &quot;John&quot;,
+      &quot;dimension&quot;: [
+        {
+          &quot;itemName&quot;: &quot;height&quot;,
+          &quot;count&quot;: 180,
+          &quot;routes&quot;: {
+            &quot;state&quot;: &quot;active&quot;,
+            &quot;name&quot;: {
+              &quot;displayname&quot;: &quot;Height&quot;
+            }
+          }
+        }
+      ]
+    }
+  ]
+}"
+      spellcheck="false">{{ jsonInput }}</textarea>
+    
+    <div class="character-count">
+      {{ jsonInput.length | number }} characters
+    </div>
+  </div>
+</div> 

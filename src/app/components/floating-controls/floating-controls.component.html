@@ -1,0 +1,17 @@
+<div class="floating-controls" [class.hidden]="!(uiState.floatingButtonVisible$ | async)">
+  <!-- Schema Button -->
+  <div class="floating-btn schema-btn" (click)="toggleSchemaSidebar()">
+    <span class="floating-btn-text">Schema</span>
+    <span class="floating-btn-icon">
+      <i class="fas fa-code"></i>
+    </span>
+  </div>
+  
+  <!-- Sorting Options Button -->
+  <div class="floating-btn sorting-btn" (click)="toggleSortingSidebar()">
+    <span class="floating-btn-text">Sorting Options</span>
+    <span class="floating-btn-icon">
+      <i class="fas fa-cogs"></i>
+    </span>
+  </div>
+</div> 

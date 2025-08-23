@@ -1,0 +1,44 @@
+<div class="modal-overlay" [class.show]="false"></div>
+
+<div class="base-panel" 
+     [class.expanded]="isVisible"
+     [ngClass]="panelClass">
+  
+  <div class="panel-header">
+    <div class="panel-title">
+      <i class="fas" [ngClass]="icon" *ngIf="icon"></i>
+      {{ title }}
+    </div>
+    
+    <div class="panel-actions">
+      <!-- Custom header actions slot -->
+      <ng-container *ngTemplateOutlet="headerActionsTemplate"></ng-container>
+      
+      <!-- Copy button -->
+      <button 
+        type="button" 
+        class="copy-btn" 
+        (click)="onCopy()"
+        [title]="copyButtonTitle"
+        [attr.aria-label]="copyButtonTitle"
+        *ngIf="showCopyButton">
+        <i class="fas fa-copy"></i>
+      </button>
+      
+      <!-- Close button -->
+      <button 
+        type="button" 
+        class="sidebar-close" 
+        (click)="onClose()"
+        title="Close panel"
+        aria-label="Close panel">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Content projection -->
+  <div class="panel-content">
+    <ng-content></ng-content>
+  </div>
+</div> 

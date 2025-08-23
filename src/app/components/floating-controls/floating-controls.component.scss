@@ -1,0 +1,113 @@
+.floating-controls {
+  position: fixed;
+  top: 50%;
+  right: -15px; /* Initially 15px off-screen to compensate for hover effect */
+  z-index: 997;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  transform: translateY(-50%);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) translateX(100px);
+  }
+
+  @media (max-width: 768px) {
+    right: -15px;
+    gap: 10px;
+  }
+}
+
+.floating-btn {
+  color: white;
+  border: none;
+  border-radius: 50px 0 0 50px;
+  padding: 16px 32px 16px 24px; /* Less padding on right for tighter fit */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px; /* Tighter spacing between text and icon */
+  white-space: nowrap; /* Prevent text wrapping */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 14px 16px 14px 20px;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 12px 12px 12px 16px;
+    gap: 6px;
+    
+    .floating-btn-text {
+      display: none;
+    }
+    
+    .floating-btn-icon {
+      margin: 0;
+    }
+  }
+}
+
+.schema-btn,
+.sorting-btn {
+  // Both buttons now use the same primary color scheme
+  background: linear-gradient(135deg, var(--primary-color), #2563eb);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+  
+  &:hover {
+    transform: translateX(-15px);
+    box-shadow: 0 12px 35px rgba(99, 102, 241, 0.35);
+  }
+
+  &:active {
+    transform: translateX(-10px);
+  }
+}
+
+.floating-btn-text {
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.floating-btn-icon {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px; /* Compact fixed width for icon alignment */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  
+  i {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  }
+}
+
+// Removed pulse animation - both buttons now have consistent styling
+
+// Responsive adjustments - maintain offset positioning for hover effect
+@media (max-width: 1024px) {
+  .floating-controls {
+    right: -15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .floating-controls {
+    right: -15px;
+  }
+  
+  .floating-btn {
+    border-radius: 40px 0 0 40px;
+  }
+} 

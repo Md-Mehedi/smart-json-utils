@@ -1,0 +1,25 @@
+<app-base-panel
+  [isVisible]="(uiState.schemaSidebarVisible$ | async) || false"
+  title="JSON Structure"
+  icon="fa-code"
+  [showCopyButton]="!!minifiedData"
+  copyButtonTitle="Copy minified JSON to clipboard"
+  (close)="closeSidebar()"
+  (copy)="copyToClipboard()">
+
+  <div class="json-display" *ngIf="minifiedData; else noData">
+    <div class="json-line" *ngFor="let lineData of getColorizedData()">
+      <span 
+        *ngFor="let token of lineData.tokens" 
+        [class]="'token-' + token.type">{{ token.text }}</span>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="no-data-message">
+      <i class="fas fa-info-circle"></i>
+      <h3>No JSON Structure Available</h3>
+      <p>Please provide valid JSON data to see the minified structure.</p>
+    </div>
+  </ng-template>
+</app-base-panel> 

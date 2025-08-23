@@ -1,0 +1,131 @@
+// Schema panel specific styles (panel structure comes from base-panel component)
+
+.json-display {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background: #f8f9fa;
+  padding: 20px;
+  margin: 20px;
+  border-radius: var(--border-radius-md);
+  overflow-x: auto;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap; /* Preserve whitespace and allow wrapping if needed */
+
+  .json-line {
+    min-height: 1.6em;
+    white-space: pre; /* Preserve exact whitespace for each line */
+    font-feature-settings: "liga" 0; /* Disable ligatures for consistent spacing */
+    
+    &:hover {
+      background: rgba(0, 0, 0, 0.02);
+    }
+  }
+}
+
+// Syntax highlighting for JSON tokens - Light theme colors
+.token-property {
+  color: #0451a5; // Dark blue for property names
+  font-weight: 600;
+}
+
+.token-string-value {
+  color: #a31515; // Dark red for string values
+}
+
+.token-number {
+  color: #098658; // Dark green for numbers
+}
+
+.token-boolean {
+  color: #0000ff; // Blue for booleans
+  font-weight: 600;
+}
+
+.token-null {
+  color: #0000ff; // Blue for null
+  font-weight: 600;
+  font-style: italic;
+}
+
+.token-type {
+  color: #267f99; // Teal for type keywords
+  font-weight: 600;
+}
+
+.token-keyword {
+  color: #af00db; // Purple for schema keywords
+  font-weight: 600;
+}
+
+.token-url {
+  color: #0000ee; // Blue for URLs
+  text-decoration: underline;
+}
+
+.token-description {
+  color: #008000; // Green for descriptions/comments
+  font-style: italic;
+}
+
+.token-punctuation {
+  color: #000000; // Black for brackets, braces, commas
+}
+
+.token-whitespace {
+  white-space: pre; // Preserve whitespace formatting
+}
+
+.token-default {
+  color: #333333; // Dark gray for default text
+}
+
+.no-data-message {
+  text-align: center;
+  color: #6c757d;
+  padding: 60px 40px;
+  margin: 20px;
+  
+  i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: block;
+  }
+  
+  h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #6c757d;
+  }
+}
+
+// Custom scrollbar for light theme
+.json-display::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.json-display::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.json-display::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+  
+  &:hover {
+    background: #a1a1a1;
+  }
+} 

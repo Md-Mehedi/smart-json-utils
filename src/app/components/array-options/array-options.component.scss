@@ -1,0 +1,810 @@
+.modal-overlay {
+  display: none;
+}
+
+// Array options panel now uses base panel styling
+// Custom positioning removed to use base panel defaults
+
+.array-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 20px 20px;
+}
+
+// Removed duplicate panel-header and panel-title styles
+// These are now handled by BasePanelComponent
+
+.sidebar-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--border-radius-md);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error-color);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.panel-controls {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sort-order-section {
+  margin-bottom: 1rem;
+  padding: 12px 16px;
+  background: rgba(99, 102, 241, 0.05);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.sort-order-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  
+  i {
+    color: var(--primary-color);
+  }
+  
+  .sort-order-value {
+    font-weight: 600;
+    color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.1);
+    padding: 2px 8px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.8rem;
+  }
+}
+
+.control-section {
+  padding: 16px;
+  background: rgba(99, 102, 241, 0.01);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(99, 102, 241, 0.08);
+  margin-bottom: 16px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Common section label styling
+.section-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: var(--text-color);
+    
+    i {
+      font-size: 1.1rem;
+    }
+    
+    span {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Icon colors for different sections
+.control-section:first-child .section-label-inner i {
+  color: #10b981; // Emerald for Key Sort Order
+}
+
+.array-sort-left .section-label-inner i {
+  color: #6366f1; // Blue for Array Sort Order
+}
+
+.subsection .section-label-inner i {
+  color: #a855f7; // Purple for Auto Key Select By
+}
+
+.section-divider {
+  border: none;
+  height: 1px;
+  background: rgba(99, 102, 241, 0.12);
+  margin: 16px 0;
+}
+
+.subsection-divider {
+  border: none;
+  height: 1px;
+  background: rgba(99, 102, 241, 0.12);
+  margin: 16px 0;
+  opacity: 0.6;
+}
+
+// Subsection styling for nested sections
+.subsection {
+  margin-top: 0;
+  
+  .section-label-inner {
+    font-size: 0.9rem;
+    font-weight: 500;
+    
+    span {
+      font-size: 0.9rem;
+    }
+    
+    i {
+      font-size: 1rem;
+    }
+  }
+}
+
+.array-sort-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.array-sort-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.array-sort-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  
+  .section-label-inner {
+    margin-bottom: 4px;
+  }
+  
+  .expansion-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+
+.array-sort-right-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+
+  .nested-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    .nested-label {
+      font-size: 0.85rem;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+  }
+
+  .sort-control {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+
+
+
+
+// Smart selection button styling to match sort toggle size
+.smart-selection-btn {
+  background: linear-gradient(135deg, var(--primary-color), #2563eb);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 70px;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &.id {
+    background: linear-gradient(135deg, #a855f7, #9333ea);
+    box-shadow: 0 2px 4px rgba(168, 85, 247, 0.2);
+    
+    &:hover {
+      background: linear-gradient(135deg, #9333ea, #7c3aed);
+      box-shadow: 0 4px 8px rgba(168, 85, 247, 0.3);
+    }
+  }
+  
+  &.name {
+    background: linear-gradient(135deg, var(--primary-color), #2563eb);
+    box-shadow: 0 2px 4px rgba(99, 102, 241, 0.2);
+    
+    &:hover {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+    }
+  }
+  
+  i {
+    font-size: 0.7rem;
+  }
+}
+
+.control-row-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 12px 16px;
+  background: rgba(99, 102, 241, 0.02);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(99, 102, 241, 0.05);
+
+  .sort-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+.control-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+
+  .nested-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .sort-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+
+
+.sort-order-btn-sm {
+  padding: 4px 8px;
+  font-size: 0.65rem;
+  
+  i {
+    font-size: 0.6rem;
+  }
+}
+
+.expansion-controls {
+  .btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    background: white;
+    color: var(--text-color);
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      background: #f9fafb;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+    
+    i {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.nested-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nested-checkbox,
+.individual-nested-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  &:hover {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+  
+  &:checked {
+    background: #6366f1;
+    border-color: #6366f1;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 6px;
+      width: 4px;
+      height: 8px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+  
+  &:indeterminate {
+    background: #6366f1;
+    border-color: #6366f1;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 3px;
+      width: 10px;
+      height: 2px;
+      background: white;
+    }
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+  }
+}
+
+.nested-label,
+.individual-nested-label {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.array-list {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 0;
+}
+
+// Depth colors palette - centralized color definitions
+$depth-colors: (
+  0: #1315b0,    // Indigo
+  1: #a65cf6,    // Purple  
+  2: #10b981,    // Emerald
+  3: #f59e0b,    // Amber
+  4: #ef4444,    // Red
+  5: #3b82f6,    // Blue
+  6: #ec4899,    // Pink
+  7: #22c55e,    // Green
+  8: #fb923c,    // Orange
+  9: #f755bc,    // Violet
+  10: #14b8a6   // Teal
+);
+
+// Function to convert hex to rgba
+@function hex-to-rgba($hex, $alpha) {
+  @return rgba($hex, $alpha);
+}
+
+// Mixin to generate depth styling
+@mixin depth-styling($depth, $color) {
+  &.depth-#{$depth} {
+    background: hex-to-rgba($color, 0.02);
+    border-left: 5px solid hex-to-rgba($color, 0.3);
+    
+    // Optional: Add subtle transition for smooth color changes
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: hex-to-rgba($color, 0.04);
+      border-left-color: hex-to-rgba($color, 0.4);
+    }
+  }
+}
+
+.array-item {
+  border-bottom: 1px solid var(--border-color);
+  
+  // Generate depth classes 0-10 using the mixin
+  @each $depth, $color in $depth-colors {
+    @include depth-styling($depth, $color);
+    
+    // Staggered z-index for sticky headers - higher depth = lower z-index
+    // This ensures proper stacking when headers stick (deeper items go under shallower ones)
+    &.depth-#{$depth} .array-header {
+      z-index: #{10 - $depth};
+    }
+  }
+}
+
+.array-header {
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  transition: all 0.2s ease;
+  position: sticky;
+  top: 0;
+  background: var(--background-primary);
+  z-index: 5;
+  border-bottom: 1px solid transparent;
+  
+  &:hover {
+    background: rgba(245, 245, 245);
+  }
+  
+  // Add a subtle shadow when sticky
+  &.stuck {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-bottom-color: var(--border-color);
+  }
+}
+
+.array-left-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.depth-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 28px;
+}
+
+.array-toggle {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  
+  &:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+  }
+}
+
+.array-title {
+  flex: 1;
+  min-width: 0;
+  
+  .array-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .array-path {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+    margin-bottom: 4px;
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.7;
+  }
+  
+  .array-subtitle {
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-top: 2px;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    
+    i {
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+    
+    &.has-selection {
+      color: var(--accent-color);
+      opacity: 0.9;
+      
+      i {
+        color: var(--accent-color);
+      }
+    }
+    
+    &.no-selection {
+      color: var(--text-secondary);
+      opacity: 0.6;
+      
+      i {
+        color: #f59e0b;
+      }
+    }
+    
+    // Make it more prominent when the array is expanded
+    .array-item.expanded & {
+      opacity: 1;
+      
+      &.has-selection {
+        color: var(--accent-color);
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.array-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+.array-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.individual-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.array-info {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  background: rgba(107, 114, 128, 0.1);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+// Mixin for depth badge styling
+@mixin depth-badge-styling($depth, $color) {
+  .depth-#{$depth} & {
+    color: $color;
+    background: hex-to-rgba($color, 0.1);
+    border: 1px solid hex-to-rgba($color, 0.2);
+  }
+}
+
+.depth-badge {
+  font-size: 0.7rem;
+  color: var(--primary-color);
+  background: rgba(99, 102, 241, 0.1);
+  padding: 2px 9px; /* Increased from 6px to 9px (3px wider) */
+  border-radius: 10px;
+  font-weight: 500;
+  min-width: 24px;
+  text-align: center;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  transition: all 0.2s ease;
+  
+  // Generate depth-specific badge colors using the same color palette
+  @each $depth, $color in $depth-colors {
+    @include depth-badge-styling($depth, $color);
+  }
+}
+
+.individual-nested-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.individual-nested-label {
+  font-size: 0.75rem;
+}
+
+.individual-sort-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.array-fields {
+  background: rgba(0, 0, 0, 0.02);
+  padding: 0 20px 15px 50px;
+  border-top: 1px solid var(--border-color);
+}
+
+.field-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  white-space: nowrap;
+  
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+}
+
+.field-radio {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  position: relative;
+  
+  &:checked {
+    border-color: var(--primary-color);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 3px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary-color);
+    }
+  }
+}
+
+.field-label {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.field-type {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: 8px;
+  
+  i {
+    font-size: 0.7rem;
+  }
+}
+
+.no-arrays-message {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-secondary);
+  
+  i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    display: block;
+  }
+  
+  p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .array-options-panel {
+    width: 100vw;
+    right: -100vw;
+  }
+  
+  .control-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .individual-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  
+  .array-header {
+    padding: 12px 15px;
+  }
+  
+  .array-name {
+    max-width: 150px;
+  }
+  
+  .array-fields {
+    padding: 0 15px 12px 40px;
+  }
+} 
+
+::ng-deep {
+  app-array-options .base-panel .panel-content {
+    overflow: hidden;
+  }
+}
