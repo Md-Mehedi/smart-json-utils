@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production --base-href \"https://md-mehedi.github.io/smart-json-utils/\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve": "ng serve --host 0.0.0.0 --port 4200"
+    "serve": "ng serve --host 0.0.0.0 --port 4200",
+    "deploy": "ng build --configuration production --base-href \"https://md-mehedi.github.io/smart-json-utils/\" && npx gh-pages -d dist/smart-json-utils/browser"
   },
   "private": true,
   "dependencies": {
